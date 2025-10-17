@@ -1155,33 +1155,23 @@
                 );
             }, 100);
             
-            // Apps Script로 저장(평탄화된 컬럼 전송)
+            // Apps Script로 저장(점수 + 원본 선택값 전송)
             try {
-                const nightWorkDays = Array.from(document.querySelectorAll('input[name="work-days"]:checked')).map(el => el.value);
                 const dateStr = new Date().toISOString().slice(0,10);
-
-                const nWork = parseFloat(normalizedWork);
-                const nSleep = parseFloat(normalizedSleep);
-                const nEx = parseFloat(normalizedExercise);
-                const nOther = parseFloat(normalizedOther);
-                const nSum = (nWork + nSleep + nEx + nOther) || 1;
-                const pct = (v) => Number(((v / nSum) * 100).toFixed(1));
+                const nightWorkDays = Array.from(document.querySelectorAll('input[name="work-days"]:checked')).map(el => el.value);
+                const mealCount = parseInt(document.querySelector('input[name="meal-count"]:checked')?.value || '0');
+                const exerciseDays = Array.from(document.querySelectorAll('input[name="exercise-days"]:checked')).map(el => el.value);
 
                 const payload = {
-                    type: 'health',
+                    type: 'health_score',
                     date: dateStr,
-                    nightWorkDays,                 // 배열은 GAS에서 join(',')로 저장 추천
-                    sleepHours,                    // 원본 입력값
-                    exerciseHours,
-                    otherHours,
-                    normalizedWork: nWork,        // 정규화 24h 기준
-                    normalizedSleep: nSleep,
-                    normalizedExercise: nEx,
-                    normalizedOther: nOther,
-                    percentWork: pct(nWork),      // 비율 % (소수1자리)
-                    percentSleep: pct(nSleep),
-                    percentExercise: pct(nEx),
-                    percentOther: pct(nOther)
+                    score: healthScore,
+                    nightWorkDays,      // 야간: 요일 배열
+                    sleepHours,         // 수면: 시간
+                    mealCount,          // 식사: 횟수
+                    exerciseDays,       // 운동: 요일 배열
+                    exerciseHours,      // 운동: 시간
+                    otherHours          // 기타: 시간
                 };
 
                 fetch(WEB_APP_URL, {
@@ -1202,49 +1192,47 @@
         attachChangeListeners();
 
         // -------------------------
-        // 댓글 기능 (localStorage)
+        // 댓글 기능 (서버 연동 + 폴백)
         // -------------------------
-        function getStoredComments() {
-            try {
-                return JSON.parse(localStorage.getItem('comments') || '[]');
-            } catch (e) {
-                return [];
-            }
-        }
-
-        function setStoredComments(list) {
-            localStorage.setItem('comments', JSON.stringify(list));
-        }
-
-        function renderComments() {
-            const list = getStoredComments();
+        async function loadComments() {
             const container = document.getElementById('comments-list');
             if (!container) return;
-            if (list.length === 0) {
-                container.innerHTML = '<p style="color:#6b7a90;">아직 댓글이 없어요. 첫 댓글을 남겨보세요!</p>';
-                return;
+            try {
+                const res = await fetch(`${WEB_APP_URL}?resource=comments`, { method: 'GET' });
+                const list = await res.json();
+                if (!Array.isArray(list)) throw new Error('Invalid comments response');
+                container.innerHTML = list.map(c => `
+                    <div class="comment-item">
+                        <div class="comment-meta">${(c.Nickname || '익명')} · ${new Date(c.Date || c.Timestamp).toLocaleString()}</div>
+                        <div class="comment-text">${(c.Message || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+                    </div>
+                `).join('') || '<p style="color:#6b7a90;">아직 댓글이 없어요. 첫 댓글을 남겨보세요!</p>';
+            } catch (err) {
+                console.error('댓글 불러오기 실패:', err);
+                container.innerHTML = '<p style="color:#d33;">댓글을 불러오지 못했습니다.</p>';
             }
-            container.innerHTML = list.map(c => `
-                <div class="comment-item">
-                    <div class="comment-meta">${c.nickname || '익명'} · ${new Date(c.date).toLocaleString()}</div>
-                    <div class="comment-text">${(c.message || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-                </div>
-            `).join('');
         }
 
         function setupCommentForm() {
             const form = document.getElementById('comment-form');
             if (!form) return;
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const nickname = form.querySelector('input[name="nickname"]').value.trim();
                 const message = form.querySelector('textarea[name="message"]').value.trim();
                 if (!message) return;
-                const list = getStoredComments();
-                list.unshift({ nickname: nickname || '익명', message, date: new Date().toISOString() });
-                setStoredComments(list);
-                form.reset();
-                renderComments();
+                try {
+                    await fetch(`${WEB_APP_URL}?resource=comments`, {
+                        method: 'POST',
+                        // 서버 CORS 미구성 시 no-cors 사용 가능(응답 본문 읽지 않음)
+                        mode: 'no-cors',
+                        body: JSON.stringify({ nickname, message, date: new Date().toISOString() })
+                    });
+                    form.reset();
+                    loadComments();
+                } catch (err) {
+                    console.error('댓글 등록 실패:', err);
+                }
             });
         }
 
@@ -1265,7 +1253,7 @@
             `;
             result.parentNode.appendChild(section);
             setupCommentForm();
-            renderComments();
+            loadComments();
         })();
     </script>
 </body>
