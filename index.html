@@ -1144,22 +1144,35 @@
                 );
             }, 100);
             
-            // Apps Script로 저장(야간요일/수면시간/운동시간/기타시간)
+            // Apps Script로 저장(평탄화된 컬럼 전송)
             try {
                 const nightWorkDays = Array.from(document.querySelectorAll('input[name="work-days"]:checked')).map(el => el.value);
+                const dateStr = new Date().toISOString().slice(0,10);
+
+                const nWork = parseFloat(normalizedWork);
+                const nSleep = parseFloat(normalizedSleep);
+                const nEx = parseFloat(normalizedExercise);
+                const nOther = parseFloat(normalizedOther);
+                const nSum = (nWork + nSleep + nEx + nOther) || 1;
+                const pct = (v) => Number(((v / nSum) * 100).toFixed(1));
+
                 const payload = {
                     type: 'health',
-                    date: new Date().toISOString().slice(0,10),
-                    content: JSON.stringify({
-                        nightWorkDays,
-                        sleepHours,
-                        exerciseHours,
-                        otherHours
-                    }),
-                    mood: '',
-                    reaction: ''
+                    date: dateStr,
+                    nightWorkDays,                 // 배열은 GAS에서 join(',')로 저장 추천
+                    sleepHours,                    // 원본 입력값
+                    exerciseHours,
+                    otherHours,
+                    normalizedWork: nWork,        // 정규화 24h 기준
+                    normalizedSleep: nSleep,
+                    normalizedExercise: nEx,
+                    normalizedOther: nOther,
+                    percentWork: pct(nWork),      // 비율 % (소수1자리)
+                    percentSleep: pct(nSleep),
+                    percentExercise: pct(nEx),
+                    percentOther: pct(nOther)
                 };
-                // 기본: no-cors로 전송(서버 CORS 미구성이어도 저장됨)
+
                 fetch(WEB_APP_URL, {
                     method: 'POST',
                     mode: 'no-cors',
