@@ -214,6 +214,7 @@
             border-radius: 10px;
             background: linear-gradient(to right, #FFE5CC 0%, #FFB800 100%);
             outline: none;
+            appearance: none;
             -webkit-appearance: none;
         }
         
@@ -392,6 +393,14 @@
             background: #ffffff;
             border: 2px solid #e9ecef;
             border-radius: 16px;
+        }
+        /* 데스크톱에서는 두 컬럼 전체를 가로질러 버튼 아래~차트 아래까지 한 줄로 배치 */
+        @media (min-width: 981px) {
+            .comments-section {
+                grid-column: 1 / -1;
+                max-width: none;
+                width: 100%;
+            }
         }
         .comments-section h3 {
             font-size: 18px;
