@@ -1177,6 +1177,7 @@
                 fetch(WEB_APP_URL, {
                     method: 'POST',
                     mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 }).catch(err => console.error('POST failed:', err));
             } catch (err) {
@@ -1224,8 +1225,8 @@
                 try {
                     await fetch(`${WEB_APP_URL}?resource=comments`, {
                         method: 'POST',
-                        // 서버 CORS 미구성 시 no-cors 사용 가능(응답 본문 읽지 않음)
                         mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ nickname, message, date: new Date().toISOString() })
                     });
                     form.reset();
@@ -1245,7 +1246,7 @@
             section.innerHTML = `
                 <h3>댓글</h3>
                 <form id="comment-form" class="comment-form">
-                    <input type="text" name="nickname" placeholder="닉네임(선택)" />
+                    <input type="text" name="nickname" placeholder="닉네임" required />
                     <textarea name="message" placeholder="댓글을 입력하세요" required></textarea>
                     <button type="submit">등록</button>
                 </form>
