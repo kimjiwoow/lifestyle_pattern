@@ -499,8 +499,7 @@
         <div class="content-wrapper">
             <!-- 입력 폼 섹션 -->
             <div class="form-section">
-                <form name="night-worker-tracker" method="POST" data-netlify="true" action="/success" id="healthForm">
-                    <input type="hidden" name="form-name" value="night-worker-tracker">
+                <form name="night-worker-tracker" method="POST" id="healthForm">
                     
                     <!-- 야간 근무 섹션 -->
                     <div class="section">
@@ -1145,11 +1144,34 @@
                 );
             }, 100);
             
+            // Apps Script로 저장(야간요일/수면시간/운동시간/기타시간)
+            try {
+                const nightWorkDays = Array.from(document.querySelectorAll('input[name="work-days"]:checked')).map(el => el.value);
+                const payload = {
+                    type: 'health',
+                    date: new Date().toISOString().slice(0,10),
+                    content: JSON.stringify({
+                        nightWorkDays,
+                        sleepHours,
+                        exerciseHours,
+                        otherHours
+                    }),
+                    mood: '',
+                    reaction: ''
+                };
+                // no-cors: 응답 본문은 읽지 않지만 저장은 수행됨
+                fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.error('Failed to POST to Apps Script:', err);
+            }
+
             // 결과 섹션으로 스크롤
             document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
             
-            // 실제 서비스에서는 여기서 Netlify Forms로 데이터 제출
-            // this.submit();
         });
 
         // 입력 변화 시 자동 미리보기 연결
