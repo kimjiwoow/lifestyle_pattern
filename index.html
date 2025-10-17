@@ -11,14 +11,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #f8f9fa;
             min-height: 100vh;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -27,7 +27,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
         }
-        
+
         .header {
             background: linear-gradient(135deg, #FFB800 0%, #FF6B00 100%);
             color: white;
@@ -36,7 +36,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .header::before {
             content: '';
             position: absolute;
@@ -47,7 +47,7 @@
             top: -100px;
             right: -50px;
         }
-        
+
         .header::after {
             content: '';
             position: absolute;
@@ -58,7 +58,7 @@
             bottom: -75px;
             left: -30px;
         }
-        
+
         .header h1 {
             font-size: 36px;
             font-weight: 800;
@@ -67,7 +67,7 @@
             z-index: 1;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .header p {
             font-size: 18px;
             opacity: 0.95;
@@ -75,18 +75,18 @@
             z-index: 1;
             font-weight: 500;
         }
-        
+
         .content-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             padding: 40px;
         }
-        
+
         .form-section {
             background: white;
         }
-        
+
         .result-section {
             background: #f8f9fa;
             border-radius: 20px;
@@ -97,7 +97,7 @@
             justify-content: center;
             min-height: 600px;
         }
-        
+
         .section {
             margin-bottom: 35px;
             padding: 25px;
@@ -106,12 +106,12 @@
             border: 2px solid #FFE5CC;
             transition: all 0.3s;
         }
-        
+
         .section:hover {
             border-color: #FFB800;
             box-shadow: 0 4px 12px rgba(255, 184, 0, 0.15);
         }
-        
+
         .section-title {
             font-size: 20px;
             font-weight: 700;
@@ -121,7 +121,7 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .section-icon {
             width: 32px;
             height: 32px;
@@ -132,11 +132,11 @@
             justify-content: center;
             font-size: 18px;
         }
-        
+
         .question {
             margin-bottom: 25px;
         }
-        
+
         .question-label {
             display: block;
             margin-bottom: 12px;
@@ -144,26 +144,22 @@
             color: #2c2c2c;
             font-size: 16px;
         }
-        
-        .checkbox-group,
-        .radio-group {
+
+        .checkbox-group, .radio-group {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
             gap: 10px;
         }
-        
-        .checkbox-item,
-        .radio-item {
+
+        .checkbox-item, .radio-item {
             position: relative;
         }
-        
-        .checkbox-item input[type="checkbox"],
-        .radio-item input[type="radio"] {
+
+        .checkbox-item input[type="checkbox"], .radio-item input[type="radio"] {
             display: none;
         }
-        
-        .checkbox-item label,
-        .radio-item label {
+
+        .checkbox-item label, .radio-item label {
             display: block;
             padding: 12px 8px;
             background: white;
@@ -176,9 +172,8 @@
             color: #666;
             font-weight: 500;
         }
-        
-        .checkbox-item input[type="checkbox"]:checked + label,
-        .radio-item input[type="radio"]:checked + label {
+
+        .checkbox-item input[type="checkbox"]:checked + label, .radio-item input[type="radio"]:checked + label {
             background: #FFB800;
             color: white;
             border-color: #FFB800;
@@ -186,20 +181,18 @@
             box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
             font-weight: 600;
         }
-        
-        .checkbox-item label:hover,
-        .radio-item label:hover {
+
+        .checkbox-item label:hover, .radio-item label:hover {
             border-color: #FFB800;
             background: #FFF9F0;
             transform: translateY(-1px);
         }
-        
-        .checkbox-item input[type="checkbox"]:checked + label:hover,
-        .radio-item input[type="radio"]:checked + label:hover {
+
+        .checkbox-item input[type="checkbox"]:checked + label:hover, .radio-item input[type="radio"]:checked + label:hover {
             background: #FF9500;
             border-color: #FF9500;
         }
-        
+
         .slider-container {
             margin-top: 15px;
             padding: 20px;
@@ -207,7 +200,7 @@
             border-radius: 12px;
             border: 2px solid #e0e0e0;
         }
-        
+
         .slider {
             width: 100%;
             height: 10px;
@@ -217,7 +210,7 @@
             appearance: none;
             -webkit-appearance: none;
         }
-        
+
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             width: 28px;
@@ -228,7 +221,7 @@
             box-shadow: 0 2px 8px rgba(255, 107, 0, 0.4);
             border: 3px solid white;
         }
-        
+
         .slider::-moz-range-thumb {
             width: 28px;
             height: 28px;
@@ -238,7 +231,7 @@
             box-shadow: 0 2px 8px rgba(255, 107, 0, 0.4);
             border: 3px solid white;
         }
-        
+
         .slider-value {
             text-align: center;
             margin-top: 15px;
@@ -246,7 +239,7 @@
             font-weight: 800;
             color: #FF6B00;
         }
-        
+
         .submit-btn {
             width: 100%;
             background: linear-gradient(135deg, #FF6B00 0%, #FF8800 100%);
@@ -263,23 +256,23 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
             background: linear-gradient(135deg, #FF8800 0%, #FF6B00 100%);
         }
-        
+
         .submit-btn:active {
             transform: translateY(0);
         }
-        
+
         .chart-container {
             width: 100%;
-            max-width: 400px;
+            max-width: 580px;
             margin: 0 auto;
         }
-        
+
         .chart-title {
             text-align: center;
             font-size: 24px;
@@ -287,28 +280,27 @@
             color: #1a1a1a;
             margin-bottom: 30px;
         }
-        
+
         .chart-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 100%;
+            aspect-ratio: 1 / 1;   /* 1:1 비율 */
         }
-        
+
         .chart-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: block;
             width: 100%;
             height: 100%;
+            transform: translateZ(0); /* GPU 레이어로 올려 미세 블러 방지 */
         }
-        
+
         .legend {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 30px;
         }
-        
+
         .legend-item {
             display: flex;
             align-items: center;
@@ -318,26 +310,26 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        
+
         .legend-color {
             width: 24px;
             height: 24px;
             border-radius: 6px;
         }
-        
+
         .legend-label {
             font-weight: 600;
             color: #333;
             font-size: 14px;
         }
-        
+
         .legend-value {
             margin-left: auto;
             font-weight: 700;
             font-size: 16px;
             color: #FF6B00;
         }
-        
+
         .health-score {
             margin-top: 30px;
             padding: 25px;
@@ -346,25 +338,25 @@
             color: white;
             text-align: center;
         }
-        
+
         .health-score-title {
             font-size: 18px;
             margin-bottom: 10px;
             opacity: 0.95;
         }
-        
+
         .health-score-value {
             font-size: 48px;
             font-weight: 800;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .health-score-desc {
             font-size: 14px;
             margin-top: 10px;
             opacity: 0.9;
         }
-        
+
         .recommendation {
             margin-top: 20px;
             padding: 20px;
@@ -372,14 +364,14 @@
             border-radius: 16px;
             border-left: 4px solid #4CAF50;
         }
-        
+
         .recommendation-title {
             font-weight: 700;
             color: #333;
             margin-bottom: 10px;
             font-size: 16px;
         }
-        
+
         .recommendation-text {
             color: #666;
             line-height: 1.6;
@@ -394,6 +386,7 @@
             border: 2px solid #e9ecef;
             border-radius: 16px;
         }
+
         /* 데스크톱에서는 두 컬럼 전체를 가로질러 버튼 아래~차트 아래까지 한 줄로 배치 */
         @media (min-width: 981px) {
             .comments-section {
@@ -402,20 +395,22 @@
                 width: 100%;
             }
         }
+
         .comments-section h3 {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 12px;
             color: #1a1a1a;
         }
+
         .comment-form {
             display: grid;
             grid-template-columns: 160px 1fr auto;
             gap: 10px;
             align-items: start;
         }
-        .comment-form input[type="text"],
-        .comment-form textarea {
+
+        .comment-form input[type="text"], .comment-form textarea {
             width: 100%;
             padding: 10px 12px;
             border: 2px solid #e0e0e0;
@@ -423,11 +418,21 @@
             font-size: 14px;
             outline: none;
         }
-        .comment-form input[type="text"],
-        .comment-form textarea { transition: border-color .15s ease, box-shadow .15s ease; }
-        .comment-form textarea { resize: vertical; min-height: 70px; }
-        .comment-form input[type="text"]:focus,
-        .comment-form textarea:focus { border-color: #FFB800; box-shadow: 0 0 0 3px rgba(255,184,0,0.15); }
+
+        .comment-form input[type="text"], .comment-form textarea {
+            transition: border-color .15s ease, box-shadow .15s ease;
+        }
+
+        .comment-form textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .comment-form input[type="text"]:focus, .comment-form textarea:focus {
+            border-color: #FFB800;
+            box-shadow: 0 0 0 3px rgba(255,184,0,0.15);
+        }
+
         .comment-form button {
             background: #FF6B00;
             color: #fff;
@@ -439,75 +444,100 @@
             transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
             box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
         }
-        .comment-form button:hover { transform: translateY(-1px); background: #FF8800; box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35); }
-        .comments-list { margin-top: 14px; display: grid; gap: 10px; }
-        .comment-item { background:#f9fafb; border:1px solid #eef1f4; border-radius:12px; padding:10px 12px; }
-        .comment-meta { font-size:12px; color:#6b7a90; margin-bottom:4px; }
-        .comment-text { white-space: pre-wrap; line-height:1.55; color:#2c2c2c; }
+
+        .comment-form button:hover {
+            transform: translateY(-1px);
+            background: #FF8800;
+            box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35);
+        }
+
+        .comments-list {
+            margin-top: 14px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .comment-item {
+            background:#f9fafb;
+            border:1px solid #eef1f4;
+            border-radius:12px;
+            padding:10px 12px;
+        }
+
+        .comment-meta {
+            font-size:12px;
+            color:#6b7a90;
+            margin-bottom:4px;
+        }
+
+        .comment-text {
+            white-space: pre-wrap;
+            line-height:1.55;
+            color:#2c2c2c;
+        }
 
         /* 댓글 반응형 정렬 */
         @media (max-width: 640px) {
-            .comment-form { grid-template-columns: 1fr; }
-            .comment-form button { width: 100%; }
+            .comment-form {
+                grid-template-columns: 1fr;
+            }
+            .comment-form button {
+                width: 100%;
+            }
         }
-        
+
         .empty-state {
             text-align: center;
             padding: 40px;
         }
-        
+
         .empty-state-icon {
             font-size: 64px;
             margin-bottom: 20px;
             opacity: 0.5;
         }
-        
+
         .empty-state-title {
             font-size: 20px;
             font-weight: 600;
             color: #666;
             margin-bottom: 10px;
         }
-        
+
         .empty-state-desc {
             font-size: 14px;
             color: #999;
         }
-        
+
         .required {
             color: #FF6B00;
         }
-        
+
         @media (max-width: 980px) {
             .content-wrapper {
                 grid-template-columns: 1fr;
             }
-            
             .result-section {
                 min-height: auto;
             }
         }
-        
+
         @media (max-width: 640px) {
             .header h1 {
                 font-size: 28px;
             }
-            
             .content-wrapper {
                 padding: 20px;
             }
-            
-            .checkbox-group,
-            .radio-group {
+            .checkbox-group, .radio-group {
                 grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
             }
-            
             .legend {
                 grid-template-columns: 1fr;
             }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -515,19 +545,16 @@
             <h1>⚡ 야간 근무자 건강 밸런스 체커</h1>
             <p>당신의 24시간을 더 건강하고 활기차게!</p>
         </div>
-        
         <div class="content-wrapper">
             <!-- 입력 폼 섹션 -->
             <div class="form-section">
                 <form name="night-worker-tracker" method="POST" id="healthForm">
-                    
                     <!-- 야간 근무 섹션 -->
                     <div class="section">
                         <div class="section-title">
                             <div class="section-icon">🌙</div>
                             <span>야간 근무</span>
                         </div>
-                        
                         <div class="question">
                             <label class="question-label">
                                 야간 활동 및 업무 요일을 선택해주세요 <span class="required">*</span>
@@ -563,28 +590,25 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="question">
                             <label class="question-label">
                                 총 하루 평균 수면시간은? <span class="required">*</span>
                             </label>
                             <div class="slider-container">
-                                <input type="range" class="slider" id="sleep-hours" name="sleep-hours" 
-                                       min="0" max="12" value="7" step="0.5" required>
+                                <input type="range" class="slider" id="sleep-hours" name="sleep-hours" min="0" max="12" value="7" step="0.5" required>
                                 <div class="slider-value">
                                     <span id="sleep-value">7</span>시간
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 식사 패턴 섹션 -->
                     <div class="section">
                         <div class="section-title">
                             <div class="section-icon">🍽️</div>
                             <span>식사 패턴</span>
                         </div>
-                        
                         <div class="question">
                             <label class="question-label">
                                 하루 몇 끼를 드시나요? (야식 포함) <span class="required">*</span>
@@ -613,14 +637,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 운동 패턴 섹션 -->
                     <div class="section">
                         <div class="section-title">
                             <div class="section-icon">💪</div>
                             <span>운동 패턴</span>
                         </div>
-                        
                         <div class="question">
                             <label class="question-label">
                                 운동하는 요일을 선택해주세요 <span class="required">*</span>
@@ -660,7 +683,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="question">
                             <label class="question-label">
                                 운동 시간은 보통 몇시간? <span class="required">*</span>
@@ -689,14 +711,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 기타 활동 섹션 -->
                     <div class="section">
                         <div class="section-title">
                             <div class="section-icon">🎯</div>
                             <span>기타 활동</span>
                         </div>
-                        
                         <div class="question">
                             <label class="question-label">
                                 그외 활동 시간은? <span class="required">*</span>
@@ -737,13 +758,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="submit-btn">
                         ⚡ 건강 밸런스 분석하기
                     </button>
                 </form>
             </div>
-            
+
             <!-- 결과 표시 섹션 -->
             <div class="result-section" id="resultSection">
                 <div class="empty-state">
@@ -757,33 +778,44 @@
             </div>
         </div>
     </div>
-    
+
     <script>
+        // DPR(디바이스 픽셀 비율) 강제 지정 - 정수로 고정
+        const DPR = Math.ceil(window.devicePixelRatio || 1);
+        Chart.defaults.devicePixelRatio = DPR;
+
         // Google Apps Script 웹 앱 URL (배포 URL)
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxhz33gVAvbEzI8x4zE2NfOr-eEf29ULNNfDi1RtlHy92PWWO9IDiYFUQIqhcrxFuw5/exec';
 
         // 전역 차트 변수
         let myChart = null;
         let myChart2 = null;
-        
+
+        // 차트 생성 후 리사이즈 함수
+        function afterCreateResize(chart) {
+            requestAnimationFrame(() => chart?.resize());
+            if (document.fonts?.ready) {
+                document.fonts.ready.then(() => chart?.resize());
+            }
+        }
+
         // 슬라이더 값 실시간 표시
         const sleepSlider = document.getElementById('sleep-hours');
         const sleepValue = document.getElementById('sleep-value');
-        
         sleepSlider.addEventListener('input', function() {
             sleepValue.textContent = this.value;
         });
-        
+
         // 운동 안함 선택 시 다른 요일 해제
         const exerciseNone = document.getElementById('exercise-none');
         const exerciseDays = document.querySelectorAll('input[name="exercise-days"]:not(#exercise-none)');
-        
+
         exerciseNone.addEventListener('change', function() {
             if (this.checked) {
                 exerciseDays.forEach(day => day.checked = false);
             }
         });
-        
+
         exerciseDays.forEach(day => {
             day.addEventListener('change', function() {
                 if (this.checked) {
@@ -791,11 +823,11 @@
                 }
             });
         });
-        
+
         // 건강 점수 계산 함수
         function calculateHealthScore(sleep, exercise, work, other) {
             let score = 0;
-            
+
             // 수면 점수 (7-9시간이 이상적)
             if (sleep >= 7 && sleep <= 9) {
                 score += 30;
@@ -806,7 +838,7 @@
             } else {
                 score += 10;
             }
-            
+
             // 운동 점수
             if (exercise >= 1 && exercise <= 2) {
                 score += 30;
@@ -817,7 +849,7 @@
             } else {
                 score += 5;
             }
-            
+
             // 야간 근무와 활동의 균형
             const totalActivity = work + other;
             if (totalActivity >= 8 && totalActivity <= 10) {
@@ -829,77 +861,81 @@
             } else {
                 score += 20;
             }
-            
+
             return Math.min(100, score);
         }
-        
+
         // 건강 추천 메시지 생성
         function getHealthRecommendation(sleep, exercise, work, other) {
             let recommendations = [];
-            
+
             if (sleep < 7) {
                 recommendations.push("수면 시간을 7-9시간으로 늘려보세요. 충분한 수면은 야간 근무자에게 특히 중요합니다.");
             } else if (sleep > 9) {
                 recommendations.push("수면 시간이 다소 많습니다. 7-9시간이 적정 수면 시간입니다.");
             }
-            
+
             if (exercise === 0) {
                 recommendations.push("규칙적인 운동을 시작해보세요. 주 3-4회, 30분 이상의 운동을 권장합니다.");
             } else if (exercise > 3) {
                 recommendations.push("운동량이 많습니다. 과도한 운동은 피로를 증가시킬 수 있어요.");
             }
-            
+
             if (work > 10) {
                 recommendations.push("야간 근무 시간이 많습니다. 충분한 휴식과 회복 시간을 가지세요.");
             }
-            
+
             if (recommendations.length === 0) {
                 recommendations.push("훌륭해요! 현재 생활 패턴이 매우 균형잡혀 있습니다. 계속 유지하세요!");
             }
-            
+
             return recommendations.join(" ");
         }
-        
+
         // 차트 생성 함수
-        function createChart(workHours, sleepHours, exerciseHours, otherHours) {
+        function createChart(workHours, sleepHours, exerciseHours, otherHours, remainingHours = 0) {
             const ctx = document.getElementById('myChart');
             
+            if (!ctx) {
+                console.error('Canvas element not found');
+                return;
+            }
+
             // 기존 차트가 있으면 제거
             if (myChart) {
                 myChart.destroy();
             }
-            
+
+            // Chart.js가 로드되었는지 확인
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js not loaded');
+                return;
+            }
+
             myChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['야간 근무', '수면', '운동', '기타 활동'],
+                    labels: ['야간 근무', '수면', '운동', '기타 활동', '남는 시간'],
                     datasets: [{
-                        data: [workHours, sleepHours, exerciseHours, otherHours],
-                        backgroundColor: [
-                            '#2C3E50',  // 야간 - 검정
-                            '#FFB800',  // 수면 - 노랑
-                            '#27AE60',  // 운동 - 초록
-                            '#FF6B00'   // 활동 - 주황
-                        ],
+                        data: [workHours, sleepHours, exerciseHours, otherHours, remainingHours],
+                        backgroundColor: ['#2C3E50','#FFB800','#27AE60','#FF6B00','#FFFFFF'],
                         borderColor: '#fff',
                         borderWidth: 3
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
                             display: false
                         },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.parsed || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    return label + ': ' + value + '시간 (' + percentage + '%)';
+                                label: (ctx) => {
+                                    const total = ctx.dataset.data.reduce((a,b)=>a+b,0);
+                                    const pct = ((ctx.parsed/total)*100).toFixed(1);
+                                    return `${ctx.label}: ${ctx.parsed}시간 (${pct}%)`;
                                 }
                             }
                         }
@@ -907,25 +943,37 @@
                     cutout: '60%'
                 }
             });
+
+            // 차트 생성 후 리사이즈
+            afterCreateResize(myChart);
         }
 
         // 개선된 원그래프(비율 강조) 생성 함수
-        function createImprovedChart(workHours, sleepHours, exerciseHours, otherHours) {
+        function createImprovedChart(workHours, sleepHours, exerciseHours, otherHours, remainingHours = 0) {
             const ctx2 = document.getElementById('myChart2');
 
-            if (!ctx2) return;
+            if (!ctx2) {
+                console.error('Canvas element myChart2 not found');
+                return;
+            }
 
             if (myChart2) {
                 myChart2.destroy();
             }
 
+            // Chart.js가 로드되었는지 확인
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js not loaded');
+                return;
+            }
+
             myChart2 = new Chart(ctx2, {
                 type: 'pie',
                 data: {
-                    labels: ['야간', '수면', '운동', '활동'],
+                    labels: ['야간','수면','운동','활동','남는 시간'],
                     datasets: [{
-                        data: [workHours, sleepHours, exerciseHours, otherHours],
-                        backgroundColor: ['#34495E', '#F1C40F', '#2ECC71', '#E67E22'],
+                        data: [workHours, sleepHours, exerciseHours, otherHours, remainingHours],
+                        backgroundColor: ['#34495E','#F1C40F','#2ECC71','#E67E22','#FFFFFF'],
                         borderColor: 'rgba(255,255,255,0.8)',
                         borderWidth: 2,
                         hoverOffset: 10
@@ -933,22 +981,25 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: { position: 'bottom' },
+                        title: { display: true, text: '건강 밸런스 비율(%)' },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
-                                    const value = context.parsed || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = total ? ((value / total) * 100).toFixed(1) : '0.0';
-                                    return `${context.label}: ${percentage}%`;
+                                label: (ctx) => {
+                                    const total = ctx.dataset.data.reduce((a,b)=>a+b,0);
+                                    const pct = total ? ((ctx.parsed/total)*100).toFixed(1) : '0.0';
+                                    return `${ctx.label}: ${pct}%`;
                                 }
                             }
-                        },
-                        title: { display: true, text: '건강 밸런스 비율(%)' }
+                        }
                     }
                 }
             });
+
+            // 차트 생성 후 리사이즈
+            afterCreateResize(myChart2);
         }
 
         // 현재 입력값으로 정규화(24시간 기준) 계산
@@ -980,57 +1031,88 @@
             return { ...normalized, sum };
         }
 
+        // 디바운스 타이머
+        let previewTimer = null;
+
         // 입력 변화 시 미리보기 자동 갱신
         function updatePreview() {
-            const computed = computeNormalizedFromInputs();
-            if (!computed) return;
+            clearTimeout(previewTimer);
+            previewTimer = setTimeout(() => {
+                const computed = computeNormalizedFromInputs();
+                if (!computed) return;
 
-            const { work, sleep, exercise, other, sum } = computed;
-            const pct = (v) => (sum ? ((v / sum) * 100).toFixed(1) : '0.0');
+                const { work, sleep, exercise, other, sum } = computed;
+                
+                // 실제 입력값 기준으로 남는 시간 계산
+                const workDays = document.querySelectorAll('input[name="work-days"]:checked');
+                const exerciseHoursInput = document.querySelector('input[name="exercise-hours"]:checked');
+                const otherHoursInput = document.querySelector('input[name="other-hours"]:checked');
+                const sleepHours = parseFloat(document.getElementById('sleep-hours').value);
+                
+                const exerciseHours = parseInt(exerciseHoursInput.value);
+                const otherHours = parseInt(otherHoursInput.value.replace('+', ''));
+                const workHoursRaw = Math.round((workDays.length * 8) / 7);
+                
+                const actualTotal = workHoursRaw + sleepHours + exerciseHours + otherHours;
+                const remaining = Math.max(0, 24 - actualTotal);
+                const pct = (v) => (sum ? ((v/sum)*100).toFixed(1) : '0.0');
 
-            const previewHTML = `
-                <div class="chart-container">
-                    <h2 class="chart-title">📊 나의 24시간 생활 밸런스</h2>
-                    <div class="chart-wrapper">
-                        <canvas id="myChart" class="chart-canvas"></canvas>
+                document.getElementById('resultSection').innerHTML = `
+                    <div class="chart-container">
+                        <h2 class="chart-title">📊 나의 24시간 생활 밸런스</h2>
+                        <div class="chart-wrapper"><canvas id="myChart" class="chart-canvas"></canvas></div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #2C3E50;"></div>
+                                <span class="legend-label">야간 근무</span>
+                                <span class="legend-value">${work}h (${pct(work)}%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #FFB800;"></div>
+                                <span class="legend-label">수면</span>
+                                <span class="legend-value">${sleep}h (${pct(sleep)}%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #27AE60;"></div>
+                                <span class="legend-label">운동</span>
+                                <span class="legend-value">${exercise}h (${pct(exercise)}%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #FF6B00;"></div>
+                                <span class="legend-label">기타 활동</span>
+                                <span class="legend-value">${other}h (${pct(other)}%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
+                                <span class="legend-label">남는 시간</span>
+                                <span class="legend-value">${remaining}h</span>
+                            </div>
+                        </div>
+                        <div style="height: 24px"></div>
+                        <h2 class="chart-title">🧭 개선된 비율 원그래프</h2>
+                        <div class="chart-wrapper"><canvas id="myChart2" class="chart-canvas"></canvas></div>
                     </div>
-                    <div class="legend">
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #2C3E50;"></div>
-                            <span class="legend-label">야간 근무</span>
-                            <span class="legend-value">${work}h (${pct(work)}%)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #FFB800;"></div>
-                            <span class="legend-label">수면</span>
-                            <span class="legend-value">${sleep}h (${pct(sleep)}%)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #27AE60;"></div>
-                            <span class="legend-label">운동</span>
-                            <span class="legend-value">${exercise}h (${pct(exercise)}%)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #FF6B00;"></div>
-                            <span class="legend-label">기타 활동</span>
-                            <span class="legend-value">${other}h (${pct(other)}%)</span>
-                        </div>
-                    </div>
-                    <div style="height: 24px"></div>
-                    <h2 class="chart-title">🧭 개선된 비율 원그래프</h2>
-                    <div class="chart-wrapper">
-                        <canvas id="myChart2" class="chart-canvas"></canvas>
-                    </div>
-                </div>
-            `;
+                `;
 
-            document.getElementById('resultSection').innerHTML = previewHTML;
-
-            // 차트들 렌더
-            setTimeout(() => {
-                createChart(work, sleep, exercise, other);
-                createImprovedChart(work, sleep, exercise, other);
-            }, 50);
+                // DOM 반영 직후 렌더
+                requestAnimationFrame(() => {
+                    // 실제 입력값 기준으로 남는 시간 계산
+                    const workDays = document.querySelectorAll('input[name="work-days"]:checked');
+                    const exerciseHoursInput = document.querySelector('input[name="exercise-hours"]:checked');
+                    const otherHoursInput = document.querySelector('input[name="other-hours"]:checked');
+                    const sleepHours = parseFloat(document.getElementById('sleep-hours').value);
+                    
+                    const exerciseHours = parseInt(exerciseHoursInput.value);
+                    const otherHours = parseInt(otherHoursInput.value.replace('+', ''));
+                    const workHoursRaw = Math.round((workDays.length * 8) / 7);
+                    
+                    const actualTotal = workHoursRaw + sleepHours + exerciseHours + otherHours;
+                    const remaining = Math.max(0, 24 - actualTotal);
+                    
+                    createChart(work, sleep, exercise, other, remaining);
+                    createImprovedChart(work, sleep, exercise, other, remaining);
+                });
+            }, 80); // 디바운스 80ms
         }
 
         function attachChangeListeners() {
@@ -1041,6 +1123,7 @@
                 'input[name="work-days"]',
                 'input[name="exercise-days"]'
             ];
+
             inputs.forEach(selector => {
                 document.querySelectorAll(selector).forEach(el => {
                     el.addEventListener('input', updatePreview);
@@ -1048,49 +1131,49 @@
                 });
             });
         }
-        
+
         // 폼 제출 처리
         const form = document.getElementById('healthForm');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // 유효성 검사
             const workDays = document.querySelectorAll('input[name="work-days"]:checked');
             if (workDays.length === 0) {
                 alert('야간 활동 및 업무 요일을 최소 하나 이상 선택해주세요.');
                 return;
             }
-            
+
             const exerciseChecked = document.querySelectorAll('input[name="exercise-days"]:checked');
             if (exerciseChecked.length === 0) {
                 alert('운동 요일을 선택해주세요. (안함도 가능합니다)');
                 return;
             }
-            
+
             // 데이터 수집
             const sleepHours = parseFloat(document.getElementById('sleep-hours').value);
             const exerciseHours = parseInt(document.querySelector('input[name="exercise-hours"]:checked').value);
             const otherHours = parseInt(document.querySelector('input[name="other-hours"]:checked').value.replace('+', ''));
-            
+
             // 야간 근무 시간 계산 (주당 근무일 * 8시간 / 7일)
             const workDaysCount = workDays.length;
             const workHours = Math.round((workDaysCount * 8) / 7);
-            
+
             // 전체 시간 정규화 (24시간 기준)
             const totalHours = workHours + sleepHours + exerciseHours + otherHours;
             const ratio = 24 / totalHours;
-            
+
             const normalizedWork = (workHours * ratio).toFixed(1);
             const normalizedSleep = (sleepHours * ratio).toFixed(1);
             const normalizedExercise = (exerciseHours * ratio).toFixed(1);
             const normalizedOther = (otherHours * ratio).toFixed(1);
-            
+
             // 건강 점수 계산
             const healthScore = calculateHealthScore(sleepHours, exerciseHours, parseFloat(normalizedWork), parseFloat(normalizedOther));
-            
+
             // 추천 메시지 생성
             const recommendation = getHealthRecommendation(sleepHours, exerciseHours, parseFloat(normalizedWork), parseFloat(normalizedOther));
-            
+
             // 결과 HTML 생성
             const resultHTML = `
                 <div class="chart-container">
@@ -1098,7 +1181,6 @@
                     <div class="chart-wrapper">
                         <canvas id="myChart" class="chart-canvas"></canvas>
                     </div>
-                    
                     <div class="legend">
                         <div class="legend-item">
                             <div class="legend-color" style="background: #2C3E50;"></div>
@@ -1126,44 +1208,47 @@
                     <div class="chart-wrapper">
                         <canvas id="myChart2" class="chart-canvas"></canvas>
                     </div>
-                    
                     <div class="health-score">
                         <div class="health-score-title">건강 밸런스 점수</div>
                         <div class="health-score-value">${healthScore}점</div>
                         <div class="health-score-desc">
-                            ${healthScore >= 80 ? '훌륭해요! 매우 건강한 생활 패턴입니다.' :
-                              healthScore >= 60 ? '좋아요! 조금만 더 개선하면 완벽해집니다.' :
-                              healthScore >= 40 ? '보통이에요. 생활 패턴 개선이 필요합니다.' :
+                            ${healthScore >= 80 ? '훌륭해요! 매우 건강한 생활 패턴입니다.' : 
+                              healthScore >= 60 ? '좋아요! 조금만 더 개선하면 완벽해집니다.' : 
+                              healthScore >= 40 ? '보통이에요. 생활 패턴 개선이 필요합니다.' : 
                               '주의가 필요해요. 생활 패턴을 점검해보세요.'}
                         </div>
                     </div>
-                    
                     <div class="recommendation">
                         <div class="recommendation-title">💡 맞춤 건강 조언</div>
                         <div class="recommendation-text">${recommendation}</div>
                     </div>
                 </div>
             `;
-            
+
             // 결과 표시
             document.getElementById('resultSection').innerHTML = resultHTML;
-            
-            // 차트 생성
-            setTimeout(() => {
+
+            // 차트 생성 - DOM 반영 직후 렌더
+            requestAnimationFrame(() => {
+                // 실제 입력값 기준으로 남는 시간 계산
+                const actualTotal = workHours + sleepHours + exerciseHours + otherHours;
+                const remaining = Math.max(0, 24 - actualTotal);
                 createChart(
                     parseFloat(normalizedWork),
                     parseFloat(normalizedSleep),
                     parseFloat(normalizedExercise),
-                    parseFloat(normalizedOther)
+                    parseFloat(normalizedOther),
+                    remaining
                 );
                 createImprovedChart(
                     parseFloat(normalizedWork),
                     parseFloat(normalizedSleep),
                     parseFloat(normalizedExercise),
-                    parseFloat(normalizedOther)
+                    parseFloat(normalizedOther),
+                    remaining
                 );
-            }, 100);
-            
+            });
+
             // Apps Script로 저장(점수 + 원본 선택값 전송)
             try {
                 const dateStr = new Date().toISOString().slice(0,10);
@@ -1175,12 +1260,12 @@
                     type: 'health_score',
                     date: dateStr,
                     score: healthScore,
-                    nightWorkDays,      // 야간: 요일 배열
-                    sleepHours,         // 수면: 시간
-                    mealCount,          // 식사: 횟수
-                    exerciseDays,       // 운동: 요일 배열
-                    exerciseHours,      // 운동: 시간
-                    otherHours          // 기타: 시간
+                    nightWorkDays, // 야간: 요일 배열
+                    sleepHours, // 수면: 시간
+                    mealCount, // 식사: 횟수
+                    exerciseDays, // 운동: 요일 배열
+                    exerciseHours, // 운동: 시간
+                    otherHours // 기타: 시간
                 };
 
                 fetch(WEB_APP_URL, {
@@ -1189,17 +1274,27 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 }).catch(err => console.error('POST failed:', err));
+
             } catch (err) {
                 console.error('Failed to POST to Apps Script:', err);
             }
 
             // 결과 섹션으로 스크롤
             document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
-            
         });
 
         // 입력 변화 시 자동 미리보기 연결
         attachChangeListeners();
+
+        // 차트 컨테이너 크기 변화 감지 (반응형 리사이즈)
+        const wrappers = document.querySelectorAll('.chart-wrapper');
+        if (wrappers.length > 0) {
+            const ro = new ResizeObserver(() => { 
+                myChart?.resize(); 
+                myChart2?.resize(); 
+            });
+            wrappers.forEach(w => ro.observe(w));
+        }
 
         // -------------------------
         // 댓글 기능 (서버 연동 + 폴백)
@@ -1207,16 +1302,20 @@
         async function loadComments() {
             const container = document.getElementById('comments-list');
             if (!container) return;
+
             try {
                 const res = await fetch(`${WEB_APP_URL}?resource=comments`, { method: 'GET' });
                 const list = await res.json();
+
                 if (!Array.isArray(list)) throw new Error('Invalid comments response');
+
                 container.innerHTML = list.map(c => `
                     <div class="comment-item">
                         <div class="comment-meta">${(c.Nickname || '익명')} · ${new Date(c.Date || c.Timestamp).toLocaleString()}</div>
                         <div class="comment-text">${(c.Message || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
                     </div>
                 `).join('') || '<p style="color:#6b7a90;">아직 댓글이 없어요. 첫 댓글을 남겨보세요!</p>';
+
             } catch (err) {
                 console.error('댓글 불러오기 실패:', err);
                 container.innerHTML = '<p style="color:#d33;">댓글을 불러오지 못했습니다.</p>';
@@ -1226,11 +1325,15 @@
         function setupCommentForm() {
             const form = document.getElementById('comment-form');
             if (!form) return;
+
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+
                 const nickname = form.querySelector('input[name="nickname"]').value.trim();
                 const message = form.querySelector('textarea[name="message"]').value.trim();
+
                 if (!message) return;
+
                 try {
                     await fetch(`${WEB_APP_URL}?resource=comments`, {
                         method: 'POST',
@@ -1238,8 +1341,10 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ nickname, message, date: new Date().toISOString() })
                     });
+
                     form.reset();
                     loadComments();
+
                 } catch (err) {
                     console.error('댓글 등록 실패:', err);
                 }
@@ -1250,6 +1355,7 @@
         (function injectCommentsSection() {
             const result = document.getElementById('resultSection');
             if (!result) return;
+
             const section = document.createElement('section');
             section.className = 'comments-section';
             section.innerHTML = `
@@ -1261,10 +1367,12 @@
                 </form>
                 <div id="comments-list" class="comments-list"></div>
             `;
+
             result.parentNode.appendChild(section);
             setupCommentForm();
             loadComments();
         })();
     </script>
 </body>
+</html>
 </html>
