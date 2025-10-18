@@ -772,7 +772,7 @@
                         </div>
                         <div class="question">
                             <label class="question-label">
-                                운동 시간은 주로 몇시간 하시는지 선택해주세요요 <span class="required">*</span>
+                                운동 시간은 주로 몇시간 하시는지 선택해주세요 <span class="required">*</span>
                             </label>
                             <div class="radio-group">
                                 <div class="radio-item">
@@ -807,8 +807,9 @@
                         </div>
                         <div class="question">
                             <label class="question-label">
-                                그 외 활동시간은 주로 몇 시간하시는지 선택해주세요. (공부, 취미, 개인 업무 등) <span class="required">*</span>
+                                그 외 활동시간은 주로 몇 시간하시는지 선택해주세요.
                             </label>
+                            <div style="font-size: 14px; color: #666; font-weight: 400; margin-top: 4px; margin-bottom: 12px;">(공부, 취미, 개인 업무 등) <span class="required">*</span></div>
                             <div class="radio-group">
                                 <div class="radio-item">
                                     <input type="radio" id="other-0" name="other-hours" value="0" required>
@@ -880,9 +881,18 @@
 
         // 차트 생성 후 리사이즈 함수
         function afterCreateResize(chart) {
-            requestAnimationFrame(() => chart?.resize());
+            if (!chart) return;
+            requestAnimationFrame(() => {
+                if (chart && typeof chart.resize === 'function') {
+                    chart.resize();
+                }
+            });
             if (document.fonts?.ready) {
-                document.fonts.ready.then(() => chart?.resize());
+                document.fonts.ready.then(() => {
+                    if (chart && typeof chart.resize === 'function') {
+                        chart.resize();
+                    }
+                });
             }
         }
 
@@ -1001,11 +1011,19 @@
             // 기존 차트가 있으면 제거
             if (myChart) {
                 myChart.destroy();
+                myChart = null;
             }
 
             // Chart.js가 로드되었는지 확인
             if (typeof Chart === 'undefined') {
                 console.error('Chart.js not loaded');
+                return;
+            }
+
+            // 데이터 유효성 검사
+            const data = [sleepHours, mealHours, exerciseHours, otherHours, workHours, remainingHours];
+            if (data.some(val => isNaN(val) || val < 0)) {
+                console.error('Invalid chart data');
                 return;
             }
 
@@ -1030,7 +1048,11 @@
                         tooltip: {
                             callbacks: {
                                 label: (ctx) => {
+                                    if (!ctx || !ctx.dataset || !ctx.dataset.data || !ctx.parsed) {
+                                        return '';
+                                    }
                                     const total = ctx.dataset.data.reduce((a,b)=>a+b,0);
+                                    if (total === 0) return '';
                                     const pct = ((ctx.parsed/total)*100).toFixed(1);
                                     return `${ctx.label}: ${ctx.parsed}시간 (${pct}%)`;
                                 }
@@ -1056,6 +1078,7 @@
 
             if (activityChart) {
                 activityChart.destroy();
+                activityChart = null;
             }
 
             // Chart.js가 로드되었는지 확인
@@ -1101,7 +1124,11 @@
                         tooltip: {
                             callbacks: {
                                 label: (ctx) => {
+                                    if (!ctx || !ctx.label || ctx.parsed === undefined || !activityData.percentages) {
+                                        return '';
+                                    }
                                     const index = ctx.dataIndex;
+                                    if (index >= activityData.percentages.length) return '';
                                     return `${ctx.label}: ${ctx.parsed}시간 (${activityData.percentages[index]}%)`;
                                 }
                             }
@@ -1170,32 +1197,32 @@
                             <div class="legend-item">
                                 <div class="legend-color" style="background: #2C3E50;"></div>
                                 <span class="legend-label">야간 활동</span>
-                                <span class="legend-value">${work}h (${pct(work)}%)</span>
+                                <span class="legend-value">${work}시간 (${pct(work)}%)</span>
                             </div>
                             <div class="legend-item">
                                 <div class="legend-color" style="background: #9B59B6;"></div>
                                 <span class="legend-label">그 외 활동시간</span>
-                                <span class="legend-value">${other}h (${pct(other)}%)</span>
+                                <span class="legend-value">${other}시간 (${pct(other)}%)</span>
                             </div>
                             <div class="legend-item">
                                 <div class="legend-color" style="background: #27AE60;"></div>
                                 <span class="legend-label">운동</span>
-                                <span class="legend-value">${exercise}h (${pct(exercise)}%)</span>
+                                <span class="legend-value">${exercise}시간 (${pct(exercise)}%)</span>
                             </div>
                             <div class="legend-item">
                                 <div class="legend-color" style="background: #FFB800;"></div>
                                 <span class="legend-label">수면</span>
-                                <span class="legend-value">${sleep}h (${pct(sleep)}%)</span>
+                                <span class="legend-value">${sleep}시간 (${pct(sleep)}%)</span>
                             </div>
                             <div class="legend-item">
                                 <div class="legend-color" style="background: #FF6B00;"></div>
                                 <span class="legend-label">식사</span>
-                                <span class="legend-value">${meal}h (${pct(meal)}%)</span>
+                                <span class="legend-value">${meal}시간 (${pct(meal)}%)</span>
                             </div>
                             <div class="legend-item">
                                 <div class="legend-color" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
                                 <span class="legend-label">휴식/여유시간</span>
-                                <span class="legend-value">${remaining}h</span>
+                                <span class="legend-value">${remaining}시간</span>
                             </div>
                         </div>
                         <div style="height: 24px"></div>
@@ -1313,32 +1340,32 @@
                         <div class="legend-item">
                             <div class="legend-color" style="background: #2C3E50;"></div>
                             <span class="legend-label">야간 활동</span>
-                            <span class="legend-value">${normalizedWork}h (${((normalizedWork/24)*100).toFixed(1)}%)</span>
+                            <span class="legend-value">${normalizedWork}시간 (${((normalizedWork/24)*100).toFixed(1)}%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #9B59B6;"></div>
                             <span class="legend-label">그 외 활동시간</span>
-                            <span class="legend-value">${normalizedOther}h (${((normalizedOther/24)*100).toFixed(1)}%)</span>
+                            <span class="legend-value">${normalizedOther}시간 (${((normalizedOther/24)*100).toFixed(1)}%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #27AE60;"></div>
                             <span class="legend-label">운동</span>
-                            <span class="legend-value">${normalizedExercise}h (${((normalizedExercise/24)*100).toFixed(1)}%)</span>
+                            <span class="legend-value">${normalizedExercise}시간 (${((normalizedExercise/24)*100).toFixed(1)}%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #FFB800;"></div>
                             <span class="legend-label">수면</span>
-                            <span class="legend-value">${normalizedSleep}h (${((normalizedSleep/24)*100).toFixed(1)}%)</span>
+                            <span class="legend-value">${normalizedSleep}시간 (${((normalizedSleep/24)*100).toFixed(1)}%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #FF6B00;"></div>
                             <span class="legend-label">식사</span>
-                            <span class="legend-value">${normalizedMeal}h (${((normalizedMeal/24)*100).toFixed(1)}%)</span>
+                            <span class="legend-value">${normalizedMeal}시간 (${((normalizedMeal/24)*100).toFixed(1)}%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
                             <span class="legend-label">휴식/여유시간</span>
-                            <span class="legend-value">${normalizedRemaining}h (${((normalizedRemaining/24)*100).toFixed(1)}%)</span>
+                            <span class="legend-value">${normalizedRemaining}시간 (${((normalizedRemaining/24)*100).toFixed(1)}%)</span>
                         </div>
                     </div>
                     <div style="height: 24px"></div>
@@ -1423,8 +1450,12 @@
         const wrappers = document.querySelectorAll('.chart-wrapper');
         if (wrappers.length > 0) {
             const ro = new ResizeObserver(() => { 
-                myChart?.resize(); 
-                activityChart?.resize(); 
+                if (myChart && typeof myChart.resize === 'function') {
+                    myChart.resize(); 
+                }
+                if (activityChart && typeof activityChart.resize === 'function') {
+                    activityChart.resize(); 
+                }
             });
             wrappers.forEach(w => ro.observe(w));
         }
